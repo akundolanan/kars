@@ -1,358 +1,924 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poster Ilmiah | Peningkatan Mutu Pelayanan Melalui PREMs & PCC-APT</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Poster Ilmiah | Peningkatan Mutu Pelayanan Melalui PREMs & PCC-APT
+    </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #F2F2F2;
-        }
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f2f2f2;
+      }
+      .chart-container {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 350px;
+        max-height: 400px;
+      }
+      @media (min-width: 768px) {
         .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 350px;
-            max-height: 400px;
+          height: 400px;
         }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 400px;
-            }
-        }
-        .text-shadow {
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-        .card {
-            background-color: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 1.5rem;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .flow-arrow {
-            font-size: 2.5rem;
-            line-height: 1;
-            color: #0073BC;
-            align-self: center;
-        }
-        .kpi-value {
-            font-weight: 900;
-            color: #00A1E4;
-            line-height: 1.1;
-        }
+      }
+      .text-shadow {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+      .card {
+        background-color: white;
+        border-radius: 0.75rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        padding: 1.5rem;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+      .flow-arrow {
+        font-size: 2.5rem;
+        line-height: 1;
+        color: #0073bc;
+        align-self: center;
+      }
+      .kpi-value {
+        font-weight: 900;
+        color: #00a1e4;
+        line-height: 1.1;
+      }
     </style>
-</head>
-<body class="text-[#231F20]">
+  </head>
+  <body class="text-[#231F20]">
     <header class="bg-[#005A8D] text-white p-8 text-center">
-        <h1 class="text-3xl md:text-5xl font-extrabold mb-2 text-shadow">Peningkatan Mutu Pelayanan Melalui Pengukuran PREMs</h1>
-        <p class="text-lg md:text-xl max-w-4xl mx-auto">Refleksi Pengalaman Pasien dalam Implementasi PCC-APT (Studi Literatur)</p>
+      <h1 class="text-3xl md:text-5xl font-extrabold mb-2 text-shadow">
+        Peningkatan Mutu Pelayanan Melalui Pengukuran PREMs
+      </h1>
+      <p class="text-lg md:text-xl max-w-4xl mx-auto">
+        Refleksi Pengalaman Pasien dalam Implementasi PCC-APT (Studi Literatur)
+      </p>
     </header>
 
     <main class="container mx-auto p-4 md:p-8">
-
-        <section id="introduction" class="text-center mb-16">
-            <h2 class="text-3xl font-bold text-[#0073BC] mb-4">Mengapa Pengalaman Pasien Penting?</h2>
-            <p class="max-w-3xl mx-auto text-lg">Dalam sistem kesehatan modern, mutu pelayanan bukan hanya tentang hasil klinis. Pengalaman yang dirasakan pasien selama proses perawatan adalah kunci untuk membangun kepercayaan, meningkatkan kepatuhan pengobatan, dan mencapai hasil kesehatan yang lebih baik secara keseluruhan.</p>
-        </section>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <div class="lg:col-span-2 card">
-                <h3 class="text-2xl font-bold text-[#0073BC] mb-4">Apa itu PREMs (Patient-Reported Experience Measures)?</h3>
-                <p class="mb-4">PREMs adalah kuesioner terstruktur yang secara objektif mengukur persepsi pasien tentang <strong class="text-[#005A8D]">proses pelayanan</strong> yang mereka terima. Ini bukan tentang kepuasan subjektif, melainkan tentang apa yang <strong class="text-[#005A8D]">benar-benar terjadi</strong> selama interaksi dengan sistem kesehatan. Data dari PREMs memberikan wawasan yang dapat ditindaklanjuti untuk perbaikan.</p>
-                <div class="chart-container" style="max-width: 800px; height: 350px;">
-                    <canvas id="premsDimensionsChart"></canvas>
-                </div>
-                <p class="text-sm text-center mt-2 text-gray-600">Grafik ini mengilustrasikan dimensi-dimensi kunci yang diukur oleh PREMs, menunjukkan area fokus untuk peningkatan kualitas pelayanan.</p>
-            </div>
-            
-            <div class="card">
-                <h3 class="text-2xl font-bold text-[#0073BC] mb-4">PREMs vs. PROMs</h3>
-                <p class="mb-6">Meskipun sering disebut bersamaan, PREMs dan PROMs mengukur hal yang berbeda namun saling melengkapi.</p>
-                <div class="space-y-6">
-                    <div class="p-4 rounded-lg bg-blue-50 border border-blue-200">
-                        <h4 class="font-bold text-lg text-[#0073BC]">PREMs (Pengalaman)</h4>
-                        <p class="text-sm"><strong>Fokus:</strong> Proses Pelayanan</p>
-                        <p class="text-sm"><strong>Contoh:</strong> "Apakah dokter menjelaskan dengan jelas?"</p>
-                    </div>
-                    <div class="p-4 rounded-lg bg-gray-50 border border-gray-200">
-                        <h4 class="font-bold text-lg text-gray-700">PROMs (Hasil)</h4>
-                        <p class="text-sm"><strong>Fokus:</strong> Hasil Kesehatan</p>
-                        <p class="text-sm"><strong>Contoh:</strong> "Seberapa parah tingkat nyeri Anda?"</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="md:col-span-2 lg:col-span-3 card">
-                <h3 class="text-2xl font-bold text-center text-[#0073BC] mb-4">Kerangka Kerja PCC-APT (Patient-Centered Care with Appropriate Technology)</h3>
-                <p class="text-center max-w-4xl mx-auto mb-8">PCC adalah filosofi di mana pelayanan menghormati preferensi dan nilai-nilai pasien. APT adalah penggunaan teknologi yang tepat guna untuk memfasilitasi PCC, mulai dari rekam medis elektronik hingga telehealth.</p>
-                <div class="flex flex-col md:flex-row justify-around items-center space-y-4 md:space-y-0 md:space-x-4">
-                    <div class="text-center p-4">
-                        <div class="text-5xl mb-2">🤝</div>
-                        <h4 class="font-bold">Hormat & Martabat</h4>
-                        <p class="text-sm">Nilai pasien sebagai inti keputusan.</p>
-                    </div>
-                    <div class="text-center p-4">
-                        <div class="text-5xl mb-2">📣</div>
-                        <h4 class="font-bold">Komunikasi Efektif</h4>
-                        <p class="text-sm">Informasi jelas & terbuka.</p>
-                    </div>
-                    <div class="text-center p-4">
-                        <div class="text-5xl mb-2">🌐</div>
-                        <h4 class="font-bold">Koordinasi Perawatan</h4>
-                        <p class="text-sm">Pelayanan terintegrasi & mulus.</p>
-                    </div>
-                    <div class="text-center p-4">
-                        <div class="text-5xl mb-2">❤️</div>
-                        <h4 class="font-bold">Dukungan Emosional</h4>
-                        <p class="text-sm">Mengatasi kecemasan & rasa takut.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="md:col-span-2 lg:col-span-3 card text-center">
-                <h3 class="text-2xl font-bold text-[#0073BC] mb-4">Siklus Peningkatan Mutu Berkelanjutan</h3>
-                <p class="max-w-4xl mx-auto mb-8">PREMs dan PCC-APT menciptakan sinergi yang kuat. Umpan balik dari PREMs secara langsung menginformasikan dan menyempurnakan implementasi PCC, membentuk sebuah siklus perbaikan yang dinamis dan responsif terhadap kebutuhan pasien.</p>
-                <div class="flex flex-col md:flex-row items-stretch justify-center gap-4 text-center">
-                    <div class="flex-1 p-6 bg-blue-50 rounded-lg border border-dashed border-[#00A1E4]">
-                        <h4 class="font-bold text-lg text-[#005A8D] mb-2">1. Implementasi PCC-APT</h4>
-                        <p class="text-sm">Penyedia layanan memberikan perawatan yang berpusat pada pasien dengan dukungan teknologi.</p>
-                    </div>
-                    <div class="flow-arrow transform md:rotate-0">➔</div>
-                    <div class="flex-1 p-6 bg-blue-50 rounded-lg border border-dashed border-[#00A1E4]">
-                        <h4 class="font-bold text-lg text-[#005A8D] mb-2">2. Pengukuran PREMs</h4>
-                        <p class="text-sm">Pengalaman pasien diukur secara sistematis melalui survei PREMs.</p>
-                    </div>
-                    <div class="flow-arrow transform md:rotate-0">➔</div>
-                    <div class="flex-1 p-6 bg-blue-50 rounded-lg border border-dashed border-[#00A1E4]">
-                        <h4 class="font-bold text-lg text-[#005A8D] mb-2">3. Analisis & Umpan Balik</h4>
-                        <p class="text-sm">Data dianalisis untuk mengidentifikasi area kekuatan dan kelemahan dalam pelayanan.</p>
-                    </div>
-                     <div class="flow-arrow transform rotate-90 md:rotate-0">➔</div>
-                    <div class="flex-1 p-6 bg-blue-50 rounded-lg border border-dashed border-[#00A1E4]">
-                        <h4 class="font-bold text-lg text-[#005A8D] mb-2">4. Peningkatan Kualitas</h4>
-                        <p class="text-sm">Wawasan yang didapat digunakan untuk menyempurnakan strategi PCC-APT.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3 class="text-2xl font-bold text-[#0073BC] mb-4">Peran Teknologi Tepat Guna (APT)</h3>
-                <p class="mb-4">Teknologi adalah fasilitator kunci dalam ekosistem ini. Berikut adalah dampak berbagai teknologi dalam mendukung PCC dan pengumpulan PREMs.</p>
-                <div class="chart-container" style="height: 380px;">
-                    <canvas id="techRoleChart"></canvas>
-                </div>
-                 <p class="text-sm text-center mt-2 text-gray-600">Skor dampak ilustratif (dari 10) berdasarkan analisis literatur.</p>
-            </div>
-
-            <div class="lg:col-span-2 card">
-                <h3 class="text-2xl font-bold text-[#0073BC] mb-4">Tantangan Implementasi & Solusinya</h3>
-                <p class="mb-6">Meskipun potensinya besar, integrasi PREMs dan PCC-APT menghadapi tantangan. Namun, setiap tantangan memiliki solusi strategis.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <h4 class="font-bold text-lg text-red-600 mb-2">Tantangan 🔴</h4>
-                        <ul class="list-disc list-inside space-y-2 text-sm">
-                            <li><strong>Beban Data:</strong> Survei yang panjang membebani pasien dan staf.</li>
-                            <li><strong>Kurangnya Standarisasi:</strong> Sulit membandingkan data antar fasilitas kesehatan.</li>
-                            <li><strong>Kesenjangan Digital:</strong> Tidak semua pasien memiliki akses atau literasi teknologi.</li>
-                            <li><strong>Adopsi Rendah:</strong> Kekhawatiran klinisi akan beban kerja tambahan.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-lg text-green-600 mb-2">Solusi 🟢</h4>
-                        <ul class="list-disc list-inside space-y-2 text-sm">
-                            <li><strong>Survei Cerdas:</strong> Kuesioner lebih singkat dan berbasis web/aplikasi.</li>
-                            <li><strong>Pengembangan Alat Standar:</strong> Kerangka kerja pengukuran yang fleksibel.</li>
-                            <li><strong>Desain Inklusif:</strong> Teknologi yang mudah digunakan dan program pelatihan.</li>
-                            <li><strong>Integrasi Alur Kerja:</strong> Menanamkan PREMs dalam rutinitas klinis (mis. via RME).</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="md:col-span-2 lg:col-span-3 card">
-                <h3 class="text-2xl font-bold text-center text-[#0073BC] mb-4">Kesimpulan & Rekomendasi</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="text-center md:text-left">
-                        <h4 class="font-semibold text-xl text-[#005A8D] mb-2">Kesimpulan Utama</h4>
-                        <p>Sinergi antara PREMs dan PCC-APT, yang didukung oleh teknologi, sangat penting untuk peningkatan mutu pelayanan kesehatan yang berkelanjutan. Ini bukan hanya sebuah metodologi, tetapi sebuah <strong class="text-[#005A8D]">pergeseran budaya</strong> menuju pelayanan yang benar-benar menempatkan pasien sebagai pusatnya, yang pada akhirnya meningkatkan kepuasan dan hasil kesehatan.</p>
-                    </div>
-                     <div>
-                        <h4 class="font-semibold text-xl text-[#005A8D] mb-2">Rekomendasi</h4>
-                        <ul class="list-disc list-inside space-y-2">
-                            <li><strong>Praktik:</strong> Implementasikan sistem pengukuran terintegrasi (PREMs & PROMs) dan investasikan pada pelatihan staf tentang prinsip PCC.</li>
-                            <li><strong>Kebijakan:</strong> Kembangkan pedoman nasional untuk pengumpulan PREMs dan atasi kesenjangan digital secara proaktif.</li>
-                            <li><strong>Penelitian:</strong> Lakukan studi jangka panjang tentang efektivitas biaya model ini dan kembangkan alat PREM yang lebih terstandarisasi.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+      <section id="introduction" class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-[#0073BC] mb-4">
+          Mengapa Pengalaman Pasien Penting?
+        </h2>
+        <p class="max-w-3xl mx-auto text-lg">
+          Dalam sistem kesehatan modern, mutu pelayanan bukan hanya tentang
+          hasil klinis. Pengalaman yang dirasakan pasien selama proses perawatan
+          adalah kunci untuk membangun kepercayaan, meningkatkan kepatuhan
+          pengobatan, dan mencapai hasil kesehatan yang lebih baik secara
+          keseluruhan.
+        </p>
+      </section>
+      <section id="prems" class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-[#0073BC] mb-4">
+          Untuk lebih jelasnya silahkan simak Podcast ini terlebih dahulu
+        </h2>
+        <div class="flex justify-center mb-8">
+          <div class="w-full max-w-4xl aspect-video">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/kDjHm6IEN38"
+              title="Peningkatan Mutu Pelayanan Melalui Pengukuran PREMs, Pengalaman Pasien dalam Implementasi PCC-APT"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
         </div>
+      </section>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 card">
+          <h3 class="text-2xl font-bold text-[#0073BC] mb-4">
+            Apa itu PREMs (Patient-Reported Experience Measures)?
+          </h3>
+          <p class="mb-4">
+            PREMs adalah kuesioner terstruktur yang secara objektif mengukur
+            persepsi pasien tentang
+            <strong class="text-[#005A8D]">proses pelayanan</strong> yang mereka
+            terima. Ini bukan tentang kepuasan subjektif, melainkan tentang apa
+            yang
+            <strong class="text-[#005A8D]">benar-benar terjadi</strong> selama
+            interaksi dengan sistem kesehatan. Data dari PREMs memberikan
+            wawasan yang dapat ditindaklanjuti untuk perbaikan.
+          </p>
+          <div class="chart-container" style="max-width: 800px; height: 350px">
+            <canvas id="premsDimensionsChart"></canvas>
+          </div>
+          <p class="text-sm text-center mt-2 text-gray-600">
+            Grafik ini mengilustrasikan dimensi-dimensi kunci yang diukur oleh
+            PREMs, menunjukkan area fokus untuk peningkatan kualitas pelayanan.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 class="text-2xl font-bold text-[#0073BC] mb-4">
+            PREMs vs. PROMs
+          </h3>
+          <p class="mb-6">
+            Meskipun sering disebut bersamaan, PREMs dan PROMs mengukur hal yang
+            berbeda namun saling melengkapi.
+          </p>
+          <div class="space-y-6">
+            <div class="p-4 rounded-lg bg-blue-50 border border-blue-200">
+              <h4 class="font-bold text-lg text-[#0073BC]">
+                PREMs (Pengalaman)
+              </h4>
+              <p>Patient-Reported Experience Measures</p>
+              <p class="text-sm"><strong>Fokus:</strong> Proses Pelayanan</p>
+              <p class="text-sm">
+                <strong>Contoh:</strong> "Apakah dokter menjelaskan dengan
+                jelas?"
+              </p>
+              <p class="text-sm">
+                <strong>Tujuan:</strong> Mengidentifikasi area untuk peningkatan
+                kualitas layanan dan memantau kinerja.
+              </p>
+            </div>
+            <div class="p-4 rounded-lg bg-gray-50 border border-gray-200">
+              <h4 class="font-bold text-lg text-gray-700">PROMs (Hasil)</h4>
+              <p>Patient-Reported Outcome Measures</p>
+              <p class="text-sm"><strong>Fokus:</strong> Hasil Kesehatan</p>
+              <p class="text-sm">
+                <strong>Contoh:</strong> "Seberapa parah tingkat nyeri Anda?"
+              </p>
+              <p class="text-sm">
+                <strong>Tujuan:</strong> Menilai efektivitas pengobatan dan
+                memandu keputusan klinis.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-2 lg:col-span-3 card">
+          <h3 class="text-2xl font-bold text-center text-[#0073BC] mb-4">
+            Kerangka Kerja PCC-APT (Patient-Centered Care with Appropriate
+            Technology)
+          </h3>
+          <p class="text-center max-w-4xl mx-auto mb-8">
+            PCC adalah filosofi di mana pelayanan menghormati preferensi dan
+            nilai-nilai pasien. APT adalah penggunaan teknologi yang tepat guna
+            untuk memfasilitasi PCC, mulai dari rekam medis elektronik hingga
+            telehealth.
+          </p>
+          <div
+            class="flex flex-col md:flex-row justify-around items-center space-y-4 md:space-y-0 md:space-x-4"
+          >
+            <div class="text-center p-4">
+              <div class="text-5xl mb-2">🤝</div>
+              <h4 class="font-bold">Hormat & Martabat</h4>
+              <p class="text-sm">Nilai pasien sebagai inti keputusan.</p>
+            </div>
+            <div class="text-center p-4">
+              <div class="text-5xl mb-2">📣</div>
+              <h4 class="font-bold">Komunikasi Efektif</h4>
+              <p class="text-sm">Informasi jelas & terbuka.</p>
+            </div>
+            <div class="text-center p-4">
+              <div class="text-5xl mb-2">🌐</div>
+              <h4 class="font-bold">Koordinasi Perawatan</h4>
+              <p class="text-sm">Pelayanan terintegrasi & mulus.</p>
+            </div>
+            <div class="text-center p-4">
+              <div class="text-5xl mb-2">❤️</div>
+              <h4 class="font-bold">Dukungan Emosional</h4>
+              <p class="text-sm">Mengatasi kecemasan & rasa takut.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-2 lg:col-span-3 card text-center">
+          <h3 class="text-2xl font-bold text-[#0073BC] mb-4">
+            Siklus Peningkatan Mutu Berkelanjutan
+          </h3>
+          <p class="max-w-4xl mx-auto mb-8">
+            PREMs dan PCC-APT menciptakan sinergi yang kuat. Umpan balik dari
+            PREMs secara langsung menginformasikan dan menyempurnakan
+            implementasi PCC, membentuk sebuah siklus perbaikan yang dinamis dan
+            responsif terhadap kebutuhan pasien.
+          </p>
+          <div
+            class="flex flex-col md:flex-row items-stretch justify-center gap-4 text-center"
+          >
+            <div
+              class="flex-1 p-6 bg-blue-50 rounded-lg border border-dashed border-[#00A1E4]"
+            >
+              <h4 class="font-bold text-lg text-[#005A8D] mb-2">
+                1. Implementasi PCC-APT
+              </h4>
+              <p class="text-sm">
+                Penyedia layanan memberikan perawatan yang berpusat pada pasien
+                dengan dukungan teknologi.
+              </p>
+            </div>
+            <div class="flow-arrow transform md:rotate-0">➔</div>
+            <div
+              class="flex-1 p-6 bg-blue-50 rounded-lg border border-dashed border-[#00A1E4]"
+            >
+              <h4 class="font-bold text-lg text-[#005A8D] mb-2">
+                2. Pengukuran PREMs
+              </h4>
+              <p class="text-sm">
+                Pengalaman pasien diukur secara sistematis melalui survei PREMs.
+              </p>
+            </div>
+            <div class="flow-arrow transform md:rotate-0">➔</div>
+            <div
+              class="flex-1 p-6 bg-blue-50 rounded-lg border border-dashed border-[#00A1E4]"
+            >
+              <h4 class="font-bold text-lg text-[#005A8D] mb-2">
+                3. Analisis & Umpan Balik
+              </h4>
+              <p class="text-sm">
+                Data dianalisis untuk mengidentifikasi area kekuatan dan
+                kelemahan dalam pelayanan.
+              </p>
+            </div>
+            <div class="flow-arrow transform rotate-90 md:rotate-0">➔</div>
+            <div
+              class="flex-1 p-6 bg-blue-50 rounded-lg border border-dashed border-[#00A1E4]"
+            >
+              <h4 class="font-bold text-lg text-[#005A8D] mb-2">
+                4. Peningkatan Kualitas
+              </h4>
+              <p class="text-sm">
+                Wawasan yang didapat digunakan untuk menyempurnakan strategi
+                PCC-APT.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="text-2xl font-bold text-[#0073BC] mb-4">
+            Peran Teknologi Tepat Guna (APT)
+          </h3>
+          <p class="mb-4">
+            Teknologi adalah fasilitator kunci dalam ekosistem ini. Berikut
+            adalah dampak berbagai teknologi dalam mendukung PCC dan pengumpulan
+            PREMs.
+          </p>
+          <div class="chart-container" style="height: 380px">
+            <canvas id="techRoleChart"></canvas>
+          </div>
+          <p class="text-sm text-center mt-2 text-gray-600">
+            Skor dampak ilustratif (dari 10) berdasarkan analisis literatur.
+          </p>
+        </div>
+
+        <div class="lg:col-span-2 card">
+          <!-- Section: Tantangan & Solusi -->
+          <section id="tantangan" class="section-card">
+            <h2 class="text-2xl md:text-3xl font-bold brand-lightblue mb-6">
+              Tantangan dan Solusi Implementasi
+            </h2>
+            <div class="space-y-6">
+              <div>
+                <h3 class="font-bold text-xl text-red-600">
+                  Tantangan: Beban Data & Standarisasi
+                </h3>
+                <p class="text-gray-700">
+                  Survei yang panjang membebani pasien dan staf, sementara
+                  kurangnya standarisasi menyulitkan perbandingan data.
+                </p>
+                <p class="mt-2 text-green-700 font-semibold">
+                  Solusi: Kembangkan survei yang lebih singkat dan modern
+                  (berbasis web), serta alat PREMS standar yang fleksibel.
+                </p>
+              </div>
+              <hr />
+              <div>
+                <h3 class="font-bold text-xl text-red-600">
+                  Tantangan: Adopsi & Kegunaan Teknologi
+                </h3>
+                <p class="text-gray-700">
+                  Rendahnya literasi digital, masalah kegunaan, dan kekhawatiran
+                  klinisi tentang beban kerja tambahan menjadi penghambat.
+                </p>
+                <p class="mt-2 text-green-700 font-semibold">
+                  Solusi: Pastikan kemudahan penggunaan, sediakan pelatihan, dan
+                  libatkan pasien serta klinisi dalam proses pengembangan.
+                </p>
+              </div>
+              <hr />
+              <div>
+                <h3 class="font-bold text-xl text-red-600">
+                  Tantangan: Kesenjangan Digital & Budaya
+                </h3>
+                <p class="text-gray-700">
+                  Teknologi dapat memperburuk kesenjangan kesehatan. Perubahan
+                  memerlukan transformasi budaya, bukan hanya adopsi alat baru.
+                </p>
+                <p class="mt-2 text-green-700 font-semibold">
+                  Solusi: Atasi masalah kesetaraan digital secara proaktif dan
+                  bangun budaya organisasi yang menghargai umpan balik pasien.
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="md:col-span-2 lg:col-span-3 card text-center">
+          <h3 class="text-2xl font-bold text-[#0073BC] mb-4">
+            Implementasi PCC-APT
+          </h3>
+          <div
+            class="flex flex-col md:flex-row items-stretch justify-center gap-4 text-center"
+          >
+            <div
+              class="flex-1 p-6 bg-blue-50 rounded-lg border border-dashed border-[#00A1E4]"
+            >
+              <h4 class="font-bold text-lg text-[#005A8D] mb-2">
+                Strategi Implementasi PCC-APT
+              </h4>
+              <p class="text-sm">
+                Implementasi PCC yang berhasil dan berkelanjutan memerlukan
+                transformasi budaya fundamental dalam organisasi pelayanan
+                kesehatan. Ini melampaui perubahan prosedural atau adopsi
+                teknologi semata untuk menanamkan nilai-nilai yang berpusat pada
+                pasien secara mendalam. Strategi yang berhasil mencakup
+                penggabungan budaya PCC, perancangan program pelatihan, komitmen
+                tenaga kerja, dan dukungan infrastruktur teknologi yang relevan.
+              </p>
+            </div>
+            <div
+              class="flex-1 p-6 bg-blue-50 rounded-lg border border-dashed border-[#00A1E4]"
+            >
+              <h4 class="font-bold text-lg text-[#005A8D] mb-2">
+                Peran Teknologi dalam Mendukung PCC
+              </h4>
+              <p class="text-sm">
+                Teknologi memainkan peran penting. Rekam Medis Elektronik (RME)
+                dan telehealth menyederhanakan aliran informasi. Platform
+                digital rounding memungkinkan komunikasi real-time. Data dari
+                perangkat yang dapat dikenakan memungkinkan pemantauan
+                berkelanjutan. Namun, kata "Appropriate" dalam APT sangat
+                penting; teknologi harus dirancang dengan pemahaman mendalam
+                tentang kebutuhan pengguna untuk benar-benar efektif.
+              </p>
+            </div>
+            <div
+              class="flex-1 p-6 bg-blue-50 rounded-lg border border-dashed border-[#00A1E4]"
+            >
+              <h4 class="font-bold text-lg text-[#005A8D] mb-2">
+                Bagaimana PREMs Menginformasikan PCC-APT?
+              </h4>
+              <p class="text-sm">
+                PREMs memberikan umpan balik langsung dari pasien yang dapat
+                menginformasikan dan menyempurnakan strategi PCC, memastikan
+                bahwa perawatan benar-benar selaras dengan kebutuhan pasien. Hal
+                ini menciptakan siklus perbaikan berkelanjutan: PCC-APT
+                bertujuan memberikan perawatan, PREMs mengukur pengalaman, dan
+                umpan balik dari PREMs menginformasikan penyesuaian pada
+                PCC-APT.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-2 lg:col-span-3 card">
+          <h3 class="text-2xl font-bold text-center text-[#0073BC] mb-4">
+            Temuan Utama dan Tren dari Literatur
+          </h3>
+          <div class="bg-gray-50 p-6 rounded-lg mb-6">
+            <p class="leading-relaxed">
+              Literatur secara konsisten menunjukkan bahwa PREMs adalah alat
+              yang sangat diperlukan. PCC muncul sebagai filosofi dasar yang
+              transformatif. Tren yang jelas adalah pemanfaatan teknologi yang
+              tepat (APT) sebagai pendorong kritis. Namun, literatur juga
+              mengidentifikasi tantangan signifikan, terutama potensi
+              "kesenjangan digital" di mana teknologi dapat secara tidak sengaja
+              memperburuk kesenjangan kesehatan yang ada jika tidak dikelola
+              dengan hati-hati.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-800 mb-4">
+              Implikasi untuk Praktik dan Kebijakan Kesehatan
+            </h3>
+            <ul class="list-none space-y-4">
+              <li class="flex items-start">
+                <span
+                  class="bg-blue-500 text-white rounded-full h-8 w-8 text-center leading-8 font-bold mr-4 flex-shrink-0"
+                  >1</span
+                >
+                <div>
+                  <strong class="text-blue-700"
+                    >Sistem Pengukuran Terintegrasi:</strong
+                  >Mengembangkan sistem untuk mengumpulkan PREMs dan PROMs
+                  secara bersamaan.
+                </div>
+              </li>
+              <li class="flex items-start">
+                <span
+                  class="bg-blue-500 text-white rounded-full h-8 w-8 text-center leading-8 font-bold mr-4 flex-shrink-0"
+                  >2</span
+                >
+                <div>
+                  <strong class="text-blue-700"
+                    >Transformasi Budaya Organisasi:</strong
+                  >
+                  Memprioritaskan pembentukan budaya yang berpusat pada pasien.
+                </div>
+              </li>
+              <li class="flex items-start">
+                <span
+                  class="bg-blue-500 text-white rounded-full h-8 w-8 text-center leading-8 font-bold mr-4 flex-shrink-0"
+                  >3</span
+                >
+                <div>
+                  <strong class="text-blue-700"
+                    >Investasi Teknologi Strategis:</strong
+                  >
+                  Mengarahkan investasi pada teknologi "yang tepat" yang ramah
+                  pengguna dan mudah diakses.
+                </div>
+              </li>
+              <li class="flex items-start">
+                <span
+                  class="bg-blue-500 text-white rounded-full h-8 w-8 text-center leading-8 font-bold mr-4 flex-shrink-0"
+                  >4</span
+                >
+                <div>
+                  <strong class="text-blue-700"
+                    >Mengatasi Kesenjangan Digital:</strong
+                  >
+                  Mengembangkan kebijakan untuk memastikan akses yang adil
+                  terhadap teknologi kesehatan.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="md:col-span-2 lg:col-span-3 card">
+          <h3 class="text-2xl font-bold text-center text-[#0073BC] mb-4">
+            Kesimpulan & Rekomendasi
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="text-center md:text-left">
+              <h4 class="font-semibold text-xl text-[#005A8D] mb-2">
+                Kesimpulan Utama
+              </h4>
+              <p>
+                Sinergi antara PREMs dan PCC-APT, yang didukung oleh teknologi,
+                sangat penting untuk peningkatan mutu pelayanan kesehatan yang
+                berkelanjutan. Ini bukan hanya sebuah metodologi, tetapi sebuah
+                <strong class="text-[#005A8D]">pergeseran budaya</strong> menuju
+                pelayanan yang benar-benar menempatkan pasien sebagai pusatnya,
+                yang pada akhirnya meningkatkan kepuasan dan hasil kesehatan.
+              </p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-xl text-[#005A8D] mb-2">
+                Rekomendasi
+              </h4>
+              <ul class="list-none space-y-4">
+                <li class="flex items-start">
+                  <span
+                    class="bg-blue-500 text-white rounded-full h-8 w-8 text-center leading-8 font-bold mr-4 flex-shrink-0"
+                    >P</span
+                  >
+                  <div>
+                    <strong class="text-blue-700">Praktik:</strong>
+                    Implementasikan sistem pengukuran terintegrasi (PREMS &
+                    PROMS), investasikan pada pelatihan staf, dan prioritaskan
+                    keterlibatan pasien dalam desain proses perawatan.
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span
+                    class="bg-green-500 text-white rounded-full h-8 w-8 text-center leading-8 font-bold mr-4 flex-shrink-0"
+                    >K</span
+                  >
+                  <div>
+                    <strong class="text-green-700">Kebijakan:</strong>
+                    Kembangkan pedoman nasional untuk pengumpulan PREMS, dan
+                    atasi kesenjangan digital secara proaktif untuk memastikan
+                    akses yang adil.
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span
+                    class="bg-orange-500 text-white rounded-full h-8 w-8 text-center leading-8 font-bold mr-4 flex-shrink-0"
+                    >R</span
+                  >
+                  <div>
+                    <strong class="text-orange-700">Penelitian:</strong> Lakukan
+                    studi jangka panjang tentang efektivitas biaya model ini,
+                    kembangkan alat PREMS yang terstandarisasi, dan selidiki
+                    strategi untuk mengatasi hambatan adopsi teknologi.
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="md:col-span-2 lg:col-span-3 card">
+          <h3 class="text-2xl font-bold text-center text-[#0073BC] mb-4">
+            Daftar Pustaka
+          </h3>
+          <p>
+            
+<ol class="list-decimal space-y-4 pl-6">
+  <li>
+    Agency for Healthcare Research and Quality. (n.d.).
+    <a href="https://www.ahrq.gov/cahps/about-cahps/patient-experience/prems-proms/index.html" target="_blank" class="text-blue-600 hover:underline">
+      What Are Patient-Reported Measures?
+    </a>
+  </li>
+  <li>
+    Definitive Healthcare. (n.d.).
+    <a href="https://www.definitivehc.com/resources/glossary/patient-reported-experience-measures" target="_blank" class="text-blue-600 hover:underline">
+      Patient Reported Experience Measures (PREMs)
+    </a>
+  </li>
+  <li>
+    Patient Advocacy Foundation. (n.d.).
+    <a href="https://patientadvocacyfoundation.com/patient-centered-care/" target="_blank" class="text-blue-600 hover:underline">
+      Patient-Centered Care
+    </a>
+  </li>
+  <li>
+    Ambula. (n.d.).
+    <a href="https://www.ambula.io/why-is-patient-centered-care-important/" target="_blank" class="text-blue-600 hover:underline">
+      Why Is Patient-Centered Care Important?
+    </a>
+  </li>
+  <li>
+    KlikMedis. (n.d.).
+    <a href="https://klikmedis.com/peluang-peningkatan-mutu-pelayanan-kesehatan-primer/" target="_blank" class="text-blue-600 hover:underline">
+      Peluang Peningkatan Mutu Pelayanan Kesehatan Primer
+    </a>
+  </li>
+  <li>
+    Jurnal DPR. (n.d.).
+    <a href="https://jurnal.dpr.go.id/index.php/kajian/article/download/1880/888" target="_blank" class="text-blue-600 hover:underline">
+      UPAYA PENINGKATAN MUTU PELAYANAN DI PUSKESMAS MELALUI PENDEKATAN MANAJEMEN SUMBERDAYA MANUSIA KESEHATAN
+    </a>
+  </li>
+  <li>
+    LMS Kemkes. (n.d.).
+    <a href="https://lms.kemkes.go.id/courses/7990911f-38c3-42b0-9915-01eaf6c67c2c" target="_blank" class="text-blue-600 hover:underline">
+      Patient Centered Care (PCC)
+    </a>
+  </li>
+  <li>
+    KARS. (n.d.).
+    <a href="https://kars.or.id/pccinstitute/" target="_blank" class="text-blue-600 hover:underline">
+      PCC Institute
+    </a>
+  </li>
+  <li>
+    InsiderCX. (n.d.).
+    <a href="https://www.insidercx.com/blog/proms-and-prems" target="_blank" class="text-blue-600 hover:underline">
+      PROMs and PREMs
+    </a>
+  </li>
+  <li>
+    PROVE Center. (n.d.).
+    <a href="https://prove.bwh.harvard.edu/seminars/role-of-patient-reported-experience-measures-in-assessing-and-improving-health-care-quality/" target="_blank" class="text-blue-600 hover:underline">
+      Role of Patient-Reported Experience Measures in Assessing and Improving Health Care Quality
+    </a>
+  </li>
+  <li>
+    HIGN. (n.d.).
+    <a href="https://hign.org/consultgeri/resources/protocols/implementation-person-centered-care-pcc" target="_blank" class="text-blue-600 hover:underline">
+      Implementation of Person-Centered Care (PCC)
+    </a>
+  </li>
+  <li>
+    ProQuest. (n.d.).
+    <a href="https://www.proquest.com/scholarly-journals/patient-centered-care-understanding/docview/893000221/se-2" target="_blank" class="text-blue-600 hover:underline">
+      Patient-centered care: Understanding
+    </a>
+  </li>
+  <li>
+    Simbo.ai. (n.d.).
+    <a href="https://www.simbo.ai/blog/the-importance-of-patient-reported-experience-measures-prems-in-assessing-care-quality-and-safety-2996369/" target="_blank" class="text-blue-600 hover:underline">
+      The Importance of Patient-Reported Experience Measures (PREMs) in Assessing Care Quality and Safety
+    </a>
+  </li>
+  <li>
+    Laymune. (n.d.).
+    <a href="https://www.laymune.com/blog/patient-reported-experience-measures-prems-elevating-patient-centred-care" target="_blank" class="text-blue-600 hover:underline">
+      Patient-Reported Experience Measures (PREMs): Elevating Patient-Centred Care
+    </a>
+  </li>
+  <li>
+    CMS. (n.d.).
+    <a href="https://mmshub.cms.gov/sites/default/files/Patient-Reported-Outcome-Measures.pdf" target="_blank" class="text-blue-600 hover:underline">
+      Patient-Reported Outcome Measures
+    </a>
+  </li>
+  <li>
+    CIHI. (n.d.).
+    <a href="https://www.cihi.ca/en/patient-experience/patient-reported-experience-measures-prems-frequently-asked-questions" target="_blank" class="text-blue-600 hover:underline">
+      Patient-Reported Experience Measures (PREMs) Frequently Asked Questions
+    </a>
+  </li>
+  <li>
+    ObservSMART. (n.d.).
+    <a href="https://www.observsmart.com/how-technology-drives-patient-centered-care-and-communication/" target="_blank" class="text-blue-600 hover:underline">
+      How Technology Drives Patient-Centered Care and Communication
+    </a>
+  </li>
+  <li>
+    PMC NCBI. (n.d.).
+    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7446109/" target="_blank" class="text-blue-600 hover:underline">
+      Healthcare services are facing extensive challenges due to the increased proportion of elderly persons and persons with chronic disease
+    </a>
+  </li>
+  <li>
+    WJGNet. (n.d.).
+    <a href="https://www.wjgnet.com/2222-0682/full/v15/i2/98066.htm" target="_blank" class="text-blue-600 hover:underline">
+      The critical role of patient-reported outcome measures (PROMs) in enhancing clinical decision-making and promoting patient-centered care
+    </a>
+  </li>
+  <li>
+    GOV.UK. (n.d.).
+    <a href="https://www.gov.uk/guidance/patient-reported-outcomes-and-experiences-study" target="_blank" class="text-blue-600 hover:underline">
+      Patient-reported outcomes and experiences study
+    </a>
+  </li>
+  <li>
+    Simbo.ai. (n.d.).
+    <a href="https://www.simbo.ai/blog/the-importance-of-patient-reported-experience-measures-prems-in-assessing-care-quality-and-safety-2996369/" target="_blank" class="text-blue-600 hover:underline">
+      The Role of Technology in Streamlining PREM Implementation
+    </a>
+  </li>
+  <li>
+    AHRQ. (n.d.).
+    <a href="https://www.ahrq.gov/cahps/about-cahps/patient-experience/index.html" target="_blank" class="text-blue-600 hover:underline">
+      Understanding Patient Experience
+    </a>
+  </li>
+  <li>
+    Ambula. (n.d.).
+    <a href="https://www.ambula.io/why-is-patient-centered-care-important/" target="_blank" class="text-blue-600 hover:underline">
+      Why Is Patient-Centered Care Important?
+    </a>
+  </li>
+  <li>
+    Sermo. (n.d.).
+    <a href="https://www.sermo.com/resources/13-solutions-for-improving-patient-care-and-outcomes-in-2025/" target="_blank" class="text-blue-600 hover:underline">
+      13 Solutions for Improving Patient Care and Outcomes in 2025
+    </a>
+  </li>
+  <li>
+    Pubrica. (n.d.).
+    <a href="https://pubrica.com/academy/concepts-definitions/pcc-research-question-framework/" target="_blank" class="text-blue-600 hover:underline">
+      PCC Research Question Framework
+    </a>
+  </li>
+  <li>
+    DPCPSI NIH. (n.d.).
+    <a href="https://dpcpsi.nih.gov/opa/news-publications" target="_blank" class="text-blue-600 hover:underline">
+      News & Publications
+    </a>
+  </li>
+  <li>
+    PubMed NCBI. (n.d.).
+    <a href="https://pubmed.ncbi.nlm.nih.gov/24422882/" target="_blank" class="text-blue-600 hover:underline">
+      Enabling patient-centered care through health information technology
+    </a>
+  </li>
+  <li>
+    PSNet AHRQ. (n.d.).
+    <a href="https://psnet.ahrq.gov/perspective/role-patient-facing-technologies-empower-patients-and-improve-safety" target="_blank" class="text-blue-600 hover:underline">
+      The Role of Patient-Facing Technologies to Empower Patients and Improve Safety
+    </a>
+  </li>
+</ol>
+
+          </p>
+        </div>
+      </div>
     </main>
 
-    <footer class="bg-[#231F20] text-white text-center p-4 mt-12">
-        <p>&copy; 2025 | Dibuat untuk Lomba Poster Ilmiah | Berdasarkan Studi Literatur</p>
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white text-center p-8">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="mb-4 md:mb-0">
+          <h4 class="font-bold text-lg mb-2">Informasi & Pendaftaran</h4>
+          <p>☎️ 0274 49 8000</p>
+          <p>📱 0852 8000 2010</p>
+          <p>🚑 0815 68 49 8000 (TRC)</p>
+        </div>
+        <div class="mb-4 md:mb-0">
+          <h4 class="font-bold text-lg mb-2">Hubungi Kami</h4>
+          <p>
+            🌐
+            <a href="http://www.rsiypdhi.com" class="hover:text-brand-lightblue"
+              >www.rsiypdhi.com</a
+            >
+          </p>
+          <p>
+            Instagram:
+            <a href="#" class="hover:text-brand-lightblue">rsiypdhi</a>
+          </p>
+          <p>
+            Facebook:
+            <a href="#" class="hover:text-brand-lightblue"
+              >RSI YogyakartaPDHI</a
+            >
+          </p>
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-2"></h4>
+          <img
+            src="https://rsiypdhi.com/file_media/image-logo/logo_U1WAGR7Y3X.png"
+            alt="QR Code"
+            class="mx-auto rounded-lg bg-white p-1"
+          />
+        </div>
+      </div>
+      <div class="mt-8 border-t border-gray-700 pt-6">
+        <p class="font-bold text-2xl brand-lightblue">#HealthWithPDHI</p>
+        <p class="text-sm text-gray-400 mt-2">
+          &copy; 2025 RS Islam Yogyakarta PDHI. All rights reserved.
+        </p>
+      </div>
     </footer>
-
     <script>
-        const brilliantBluesPalette = {
-            primary: '#00A1E4',
-            secondary: '#0073BC',
-            dark: '#005A8D',
-            light: '#F2F2F2',
-            text: '#231F20'
-        };
+      const brilliantBluesPalette = {
+        primary: "#00A1E4",
+        secondary: "#0073BC",
+        dark: "#005A8D",
+        light: "#F2F2F2",
+        text: "#231F20",
+      };
 
-        function wrapLabel(str, maxWidth) {
-            if (str.length <= maxWidth) {
-                return str;
-            }
-            const words = str.split(' ');
-            let lines = [];
-            let currentLine = words[0];
-
-            for (let i = 1; i < words.length; i++) {
-                if (currentLine.length + words[i].length + 1 < maxWidth) {
-                    currentLine += ' ' + words[i];
-                } else {
-                    lines.push(currentLine);
-                    currentLine = words[i];
-                }
-            }
-            lines.push(currentLine);
-            return lines;
+      function wrapLabel(str, maxWidth) {
+        if (str.length <= maxWidth) {
+          return str;
         }
-        
-        const tooltipTitleCallback = (tooltipItems) => {
-            const item = tooltipItems[0];
-            let label = item.chart.data.labels[item.dataIndex];
-            if (Array.isArray(label)) {
-                return label.join(' ');
-            }
-            return label;
-        };
-        
-        const commonChartOptions = {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: {
-                        color: brilliantBluesPalette.text,
-                        font: { size: 12 }
-                    }
-                },
-                tooltip: {
-                    callbacks: {
-                        title: tooltipTitleCallback
-                    },
-                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                    titleFont: { size: 14 },
-                    bodyFont: { size: 12 },
-                    padding: 10
-                }
+        const words = str.split(" ");
+        let lines = [];
+        let currentLine = words[0];
+
+        for (let i = 1; i < words.length; i++) {
+          if (currentLine.length + words[i].length + 1 < maxWidth) {
+            currentLine += " " + words[i];
+          } else {
+            lines.push(currentLine);
+            currentLine = words[i];
+          }
+        }
+        lines.push(currentLine);
+        return lines;
+      }
+
+      const tooltipTitleCallback = (tooltipItems) => {
+        const item = tooltipItems[0];
+        let label = item.chart.data.labels[item.dataIndex];
+        if (Array.isArray(label)) {
+          return label.join(" ");
+        }
+        return label;
+      };
+
+      const commonChartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: "bottom",
+            labels: {
+              color: brilliantBluesPalette.text,
+              font: { size: 12 },
             },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: { color: brilliantBluesPalette.text },
-                    grid: { color: 'rgba(0, 0, 0, 0.05)' }
-                },
-                x: {
-                    ticks: { color: brilliantBluesPalette.text },
-                    grid: { display: false }
-                }
-            }
-        };
+          },
+          tooltip: {
+            callbacks: {
+              title: tooltipTitleCallback,
+            },
+            backgroundColor: "rgba(0, 0, 0, 0.8)",
+            titleFont: { size: 14 },
+            bodyFont: { size: 12 },
+            padding: 10,
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { color: brilliantBluesPalette.text },
+            grid: { color: "rgba(0, 0, 0, 0.05)" },
+          },
+          x: {
+            ticks: { color: brilliantBluesPalette.text },
+            grid: { display: false },
+          },
+        },
+      };
 
-        const premsDimensionsData = {
-            labels: ['Komunikasi', 'Akses ke Perawatan', 'Rasa Hormat & Martabat', 'Koordinasi Perawatan', ['Kenyamanan &', 'Dukungan Emosional'], 'Informasi yang Diberikan'],
-            datasets: [{
-                label: 'Tingkat Kepentingan (Ilustratif)',
-                data: [95, 85, 98, 90, 88, 92],
-                backgroundColor: [
-                    'rgba(0, 161, 228, 0.6)',
-                    'rgba(0, 115, 188, 0.6)',
-                    'rgba(0, 90, 141, 0.6)',
-                    'rgba(0, 161, 228, 0.8)',
-                    'rgba(0, 115, 188, 0.8)',
-                    'rgba(0, 90, 141, 0.8)'
-                ],
-                borderColor: [
-                    '#00A1E4',
-                    '#0073BC',
-                    '#005A8D',
-                    '#00A1E4',
-                    '#0073BC',
-                    '#005A8D'
-                ],
-                borderWidth: 2
-            }]
-        };
+      const premsDimensionsData = {
+        labels: [
+          "Komunikasi",
+          "Akses ke Perawatan",
+          "Rasa Hormat & Martabat",
+          "Koordinasi Perawatan",
+          ["Kenyamanan &", "Dukungan Emosional"],
+          "Informasi yang Diberikan",
+        ],
+        datasets: [
+          {
+            label: "Tingkat Kepentingan (Ilustratif)",
+            data: [95, 85, 98, 90, 88, 92],
+            backgroundColor: [
+              "rgba(0, 161, 228, 0.6)",
+              "rgba(0, 115, 188, 0.6)",
+              "rgba(0, 90, 141, 0.6)",
+              "rgba(0, 161, 228, 0.8)",
+              "rgba(0, 115, 188, 0.8)",
+              "rgba(0, 90, 141, 0.8)",
+            ],
+            borderColor: [
+              "#00A1E4",
+              "#0073BC",
+              "#005A8D",
+              "#00A1E4",
+              "#0073BC",
+              "#005A8D",
+            ],
+            borderWidth: 2,
+          },
+        ],
+      };
 
-        new Chart(document.getElementById('premsDimensionsChart'), {
-            type: 'bar',
-            data: premsDimensionsData,
-            options: { ...commonChartOptions }
-        });
+      new Chart(document.getElementById("premsDimensionsChart"), {
+        type: "bar",
+        data: premsDimensionsData,
+        options: { ...commonChartOptions },
+      });
 
-        const techRoleData = {
-            labels: [wrapLabel('Rekam Medis Elektronik', 16), 'Telehealth', wrapLabel('Aplikasi Kesehatan Seluler', 16)],
-            datasets: [{
-                label: 'Peningkatan Komunikasi',
-                data: [8, 9, 8.5],
-                backgroundColor: 'rgba(0, 161, 228, 0.6)',
-                borderColor: '#00A1E4',
-                borderWidth: 2
-            }, {
-                label: 'Peningkatan Koordinasi',
-                data: [9, 7.5, 7],
-                backgroundColor: 'rgba(0, 115, 188, 0.6)',
-                borderColor: '#0073BC',
-                borderWidth: 2
-            }, {
-                label: 'Dukungan Personalisasi',
-                data: [7, 8.5, 9],
-                backgroundColor: 'rgba(0, 90, 141, 0.6)',
-                borderColor: '#005A8D',
-                borderWidth: 2
-            }]
-        };
+      const techRoleData = {
+        labels: [
+          wrapLabel("Rekam Medis Elektronik", 16),
+          "Telehealth",
+          wrapLabel("Aplikasi Kesehatan Seluler", 16),
+        ],
+        datasets: [
+          {
+            label: "Peningkatan Komunikasi",
+            data: [8, 9, 8.5],
+            backgroundColor: "rgba(0, 161, 228, 0.6)",
+            borderColor: "#00A1E4",
+            borderWidth: 2,
+          },
+          {
+            label: "Peningkatan Koordinasi",
+            data: [9, 7.5, 7],
+            backgroundColor: "rgba(0, 115, 188, 0.6)",
+            borderColor: "#0073BC",
+            borderWidth: 2,
+          },
+          {
+            label: "Dukungan Personalisasi",
+            data: [7, 8.5, 9],
+            backgroundColor: "rgba(0, 90, 141, 0.6)",
+            borderColor: "#005A8D",
+            borderWidth: 2,
+          },
+        ],
+      };
 
-        new Chart(document.getElementById('techRoleChart'), {
-            type: 'bar',
-            data: techRoleData,
-            options: {
-                ...commonChartOptions,
-                 scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 10,
-                        ticks: { color: brilliantBluesPalette.text },
-                        grid: { color: 'rgba(0, 0, 0, 0.05)' }
-                    },
-                    x: {
-                        ticks: { color: brilliantBluesPalette.text },
-                        grid: { display: false }
-                    }
-                }
-            }
-        });
+      new Chart(document.getElementById("techRoleChart"), {
+        type: "bar",
+        data: techRoleData,
+        options: {
+          ...commonChartOptions,
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 10,
+              ticks: { color: brilliantBluesPalette.text },
+              grid: { color: "rgba(0, 0, 0, 0.05)" },
+            },
+            x: {
+              ticks: { color: brilliantBluesPalette.text },
+              grid: { display: false },
+            },
+          },
+        },
+      });
     </script>
-
-</body>
+  </body>
 </html>
